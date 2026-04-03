@@ -1,5 +1,6 @@
 import os
 from datetime import datetime, timedelta
+import secrets
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Depends, status
@@ -36,6 +37,13 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60
 FAKE_USERNAME=os.getenv("FAKE_USERNAME")
 FAKE_PASSWORD = os.getenv("FAKE_PASSWORD")
 
+# 03-04-2026 - Due to an Error related to the secret key length when running the app, 
+# I generated a new 32-byte key using Python's secrets module and set it as 
+# the SECRET_KEY environment variable. 
+# This should resolve the issue and allow the JWT authentication to work properly.
+# new_key = secrets.token_bytes(32)
+# print(new_key)
+
 # -----------------------------
 # FastAPI App
 # -----------------------------
@@ -44,8 +52,8 @@ FAKE_PASSWORD = os.getenv("FAKE_PASSWORD")
 # Initialize the FastAPI app
 app = FastAPI(
 
-    title="Python + FastApi + JWT Auth + AI Agent + Groq + LLP + Langchain",
-    description="02-04-2026 - FastAPI with JWT Auth serving an AI agent powered by one of Groq's LLaMA models, using Langchain for agent orchestration and Wikipedia tool integration",
+    title="Python + FastApi + JWT Auth + AI Agent + LLP + Groq + Langchain",
+    description="03-04-2026 - FastAPI with JWT Auth serving an AI agent powered by one of Groq's LLaMA models, using Langchain for agent orchestration and Wikipedia tool integration",
     version="0.0.1",
 
     contact={
