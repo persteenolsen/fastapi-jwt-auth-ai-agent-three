@@ -1,4 +1,4 @@
-# Python + FastAPI + JWT Auth + AI Agent + LLM + Groq + Langchain 
+# Python + FastAPI + JWT Auth + AI Agent + Groq + LLM + Langchain 
 
 A REST API that serves:
 
@@ -6,13 +6,13 @@ A REST API that serves:
 
 - JWT Auth
 
-- An AI Agent by Langchang using a LLP by Groq with Wikipedia tool for seaching
+- An AI Agent by Langchain using a LLP by Groq with Wikipedia tool for seaching
 
 - Swagger / OpenAPI
 
 Last updated:
 
-- 03-04-2026
+- 06-04-2026
 
 Python Version:
 

@@ -52,8 +52,8 @@ FAKE_PASSWORD = os.getenv("FAKE_PASSWORD")
 # Initialize the FastAPI app
 app = FastAPI(
 
-    title="Python + FastApi + JWT Auth + AI Agent + LLP + Groq + Langchain",
-    description="03-04-2026 - FastAPI with JWT Auth serving an AI agent powered by one of Groq's LLaMA models, using Langchain for agent orchestration and Wikipedia tool integration",
+    title="Python + FastApi + JWT Auth + AI Agent + Groq + LLM + Langchain",
+    description="06-04-2026 - FastAPI with JWT Auth serving an AI agent powered by one of Groq's LLaMA models, using Langchain for agent orchestration and Wikipedia tool integration",
     version="0.0.1",
 
     contact={
