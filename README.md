@@ -13,7 +13,7 @@ This project is designed as a clean, minimal, and extensible AI backend for buil
 - LLM Provider: Groq (`openai/gpt-oss-20b`)
 - Python: 3.12
 - API Version: 0.0.3
-- Last Updated: 03-07-2026
+- Last Updated: 04-07-2026
 
 ---
 

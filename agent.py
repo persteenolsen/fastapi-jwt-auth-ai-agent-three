@@ -58,7 +58,7 @@ prompt = ChatPromptTemplate.from_messages([
 ])
 
 # -------------------------------------------------
-# AGENT (NO REACT)
+# AGENT
 # -------------------------------------------------
 
 agent = create_tool_calling_agent(
@@ -77,7 +77,7 @@ agent_executor = AgentExecutor(
 )
 
 # -------------------------------------------------
-# PUBLIC API (same response format as before)
+# RUN AGENT
 # -------------------------------------------------
 
 def run_agent(query: str):
