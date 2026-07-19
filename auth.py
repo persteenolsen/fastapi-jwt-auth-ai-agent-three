@@ -1,28 +1,64 @@
 from datetime import datetime, timedelta
 from typing import Optional
+
 from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.security import OAuth2PasswordBearer
 import jwt
 
-from config import SECRET_KEY, ALGORITHM, FAKE_USERNAME, ACCESS_TOKEN_EXPIRE_MINUTES
+from config import SECRET_KEY, ALGORITHM, FAKE_USERNAME
 
-security = HTTPBearer()
 
-def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
+
+
+
+def create_access_token(
+    data: dict,
+    expires_delta: Optional[timedelta] = None
+):
     to_encode = data.copy()
-    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=15))
-    to_encode.update({"exp": expire})
-    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
 
-def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    token = credentials.credentials
+    expire = datetime.utcnow() + (
+        expires_delta or timedelta(minutes=15)
+    )
+
+    to_encode.update({"exp": expire})
+
+    return jwt.encode(
+        to_encode,
+        SECRET_KEY,
+        algorithm=ALGORITHM
+    )
+
+
+def verify_token(
+    token: str = Depends(oauth2_scheme)
+):
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        payload = jwt.decode(
+            token,
+            SECRET_KEY,
+            algorithms=[ALGORITHM]
+        )
+
         username = payload.get("sub")
+
         if username != FAKE_USERNAME:
-            raise HTTPException(status_code=401, detail="Invalid user")
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid user"
+            )
+
         return username
+
     except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Token expired")
+        raise HTTPException(
+            status_code=401,
+            detail="Token expired"
+        )
+
     except jwt.InvalidTokenError:
-        raise HTTPException(status_code=401, detail="Invalid token")
+        raise HTTPException(
+            status_code=401,
+            detail="Invalid token"
+        )
