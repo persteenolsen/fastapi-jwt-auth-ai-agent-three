@@ -1,164 +1,284 @@
-# 🚀 FastAPI with JWT Auth serving a Tool-Calling AI Agent using LangChain
+# 🚀 FastAPI + Vue 3 JWT Auth AI Agent with LangChain Tool Calling
 
-A production-style FastAPI backend built with **LangChain**, Groq LLMs, and JWT authentication. The system implements a modern **tool-calling AI agent architecture** that automatically decides when to use external tools such as Wikipedia for factual retrieval.
+A full-stack AI Agent application built with **FastAPI**, **Vue 3**, **Pinia**, **LangChain**, **Groq LLMs**, and **JWT authentication**.
 
-This project is designed as a clean, minimal, and extensible AI backend for building intelligent assistants and API-based AI services.
+The system implements a modern **tool-calling AI agent architecture** where the LLM can decide when to use external tools such as Wikipedia for factual retrieval.
+
+The project contains:
+
+- FastAPI backend API
+- Vue 3 SPA frontend
+- JWT authentication
+- LangChain tool-calling agent
+- Groq LLM integration
+- Wikipedia retrieval tool
+- Transparent agent workflow display
+
+The frontend allows users to interact with the AI agent and see:
+
+- Final answer
+- Agent action
+- Tool input
+- Tool observation
 
 ---
 
 # Version
+
+## Backend
 
 - Framework: FastAPI
 - Orchestration: LangChain
 - LLM Provider: Groq (`openai/gpt-oss-20b`)
 - Python: 3.12
 - API Version: 0.0.3
+
+## Frontend
+
+- Framework: Vue 3
+- State Management: Pinia
+- Build Tool: Vite
+- Authentication: JWT Bearer Tokens
+
+## Project
+
 - Last Updated: 22-07-2026
 
 ---
 
-## 📌 Project Overview
+# 📌 Project Overview
 
-This project combines:
+This project combines a modern frontend and backend architecture for building an authenticated AI Agent application.
 
-- FastAPI for backend API development
-- JWT authentication for secure access control
-- LangChain tool-calling agents for orchestration
+The system consists of:
+
+- FastAPI backend for API services
+- Vue 3 frontend for user interaction
+- JWT authentication for protected access
+- LangChain agent orchestration
 - Groq LLM for fast inference
-- Wikipedia tool for external factual knowledge retrieval
+- Wikipedia tool for external factual retrieval
 
-The agent dynamically decides whether to respond directly or use external tools.
+The AI agent dynamically decides whether to:
 
----
-
-## 🎯 Use Cases
-
-- 🤖 AI assistant backend API
-- ⚡ Tool-using LLM service
-- 🧠 LangChain agent learning project
-- 🌐 Wikipedia-powered knowledge assistant
-- 🔐 Secure AI endpoints with JWT authentication
-- 🧪 LLM + tool integration experimentation
-- 🚀 Backend foundation for AI SaaS products
+- Answer directly using the LLM
+- Call an external tool
+- Use returned information to generate the final answer
 
 ---
 
-## ✨ Key Features
+# 🏗️ Architecture
 
-### 🔐 JWT Authentication
+User
+|
+v
+Vue 3 Frontend
+|
+| JWT Authentication
+|
+v
+FastAPI Backend
+|
+v
+LangChain AI Agent
+|
++----------------+
+|                |
+v                v
+Groq LLM      Wikipedia Tool
+|
+v
+Observation
+|
+v
+Final Answer
 
-- Secure token-based authentication (HS256)
+---
+
+# ✨ Features
+
+## 🔐 JWT Authentication
+
+- Secure token-based authentication
 - Protected `/chat` endpoint
-- Simple login flow for testing/demo
+- Vue SPA login flow
+- Bearer token handling
 - Environment-based secrets
 
 ---
 
-### 🤖 LangChain Tool-Calling Agent
+## 🤖 LangChain Tool-Calling Agent
 
-This system uses a **LangChain tool-calling agent** that eliminates fragile prompt parsing.
+The backend uses LangChain's structured tool-calling agent architecture.
 
-Core behavior:
+The agent automatically decides whether to:
 
-- The LLM decides when to use tools automatically
-- Tools are executed via LangChain's structured tool-calling system
-- No manual parsing of Thought/Action/Observation
-- No formatting errors or regex-based extraction
+- Respond directly
+- Use an external tool
 
 Workflow:
 
-1. User sends a query
-2. LangChain agent sends input to the LLM
-3. LLM decides:
-   - respond directly OR
-   - call Wikipedia tool
-4. Tool executes if needed
-5. Observation is returned to the model
-6. Final response is generated
+1. User sends a question
+2. Vue sends request to FastAPI
+3. LangChain agent processes the request
+4. LLM decides whether a tool is needed
+5. Tool executes if required
+6. Observation is returned
+7. Final answer is generated
+
+No manual parsing of model output is required.
 
 ---
 
-### 🧠 Groq LLM Integration
+## 🧠 Groq LLM Integration
+
+The project uses Groq for fast inference.
+
+Configuration:
 
 - Model: `openai/gpt-oss-20b`
 - Temperature: `0`
-- Streaming: disabled for stability
-- API key managed via environment variables
+- Streaming: Disabled
+- API key stored in environment variables
 
-The LLM is optimized for fast inference and deterministic outputs.
+Benefits:
+
+- Fast responses
+- Stable output
+- Simple API integration
 
 ---
 
-### 🌐 Wikipedia Tool
+## 🌐 Wikipedia Tool
 
-A lightweight Wikipedia retrieval tool provides factual grounding.
+The AI agent includes a Wikipedia retrieval tool.
 
 Capabilities:
 
 - Direct page lookup
 - Search fallback
 - Summary extraction
-- Safe error handling
+- Error handling
 
-The tool is automatically invoked by the agent when needed.
-
----
-
-## 🧩 System Capabilities
-
-- General question answering
-- Wikipedia factual lookup
-- Context-aware responses
-- Creative writing
-- Joke generation
-- Hybrid reasoning (direct + tool-based)
-- Extensible multi-tool architecture
+The agent decides automatically when Wikipedia should be used.
 
 ---
 
-## 📡 API Endpoints
+# 🖥️ Vue 3 Frontend
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/login` | Get JWT access token |
-| POST | `/chat` | Chat with AI agent |
-| GET | `/health` | Service health check |
-| GET | `/test-groq` | Test Groq connection |
-| GET | `/test-wikipedia` | Test Wikipedia tool |
+The frontend is a Vue 3 Single Page Application.
+
+Features:
+
+- Login page
+- JWT authentication
+- Pinia state management
+- AI chat interface
+- API integration
+- Agent response display
+
+The interface displays:
+
+## Answer
+
+The final response generated by the AI agent.
+
+## Action
+
+The tool selected by the agent.
+
+Example:
+
+Wikipedia: Apple CEO
+
+## Observation
+
+The information returned from the selected tool.
+
+This provides transparency into the agent workflow.
 
 ---
 
-## ⚙️ Getting Started
+# 🧩 Tech Stack
 
-### Clone Repository
+## Backend
 
-git clone https://github.com/your-username/your-repo.git
+- FastAPI
+- Python 3.12
+- LangChain
+- Groq LLM
+- JWT Authentication
+- Wikipedia Tool
 
-cd your-repo
+## Frontend
+
+- Vue 3
+- Pinia
+- Vite
+- JavaScript
+- ESLint
 
 ---
 
-### Create Virtual Environment
+# 📁 Project Structure
+
+.
+├── backend
+│   ├── main.py
+│   ├── routers
+│   ├── agent.py
+│   ├── tools
+│   ├── auth.py
+│   ├── models.py
+│   ├── config.py
+│   └── requirements.txt
+│
+├── frontend
+│   ├── src
+│   │   ├── main.js
+│   │   ├── App.vue
+│   │   ├── views
+│   │   ├── stores
+│   │   ├── helpers
+│   │   └── router
+│   ├── package.json
+│   └── vite.config.js
+│
+└── README.md
+
+---
+
+# ⚙️ Backend Installation
+
+Clone repository:
+
+git clone https://github.com/your-username/your-repository.git
+
+Enter backend folder:
+
+cd backend
+
+Create virtual environment:
 
 python -m venv venv
+
+Activate environment.
 
 Windows:
 
 venv\Scripts\activate
 
-macOS/Linux:
+Linux/macOS:
 
 source venv/bin/activate
 
----
-
-### Install Dependencies
+Install dependencies:
 
 pip install -r requirements.txt
 
 ---
 
-## 🔑 Environment Variables
+# 🔑 Backend Environment Variables
 
 Create a `.env` file:
 
@@ -176,7 +296,9 @@ python -c "import secrets; print(secrets.token_hex(32))"
 
 ---
 
-## ▶️ Run the Application
+# ▶️ Run FastAPI Backend
+
+Start server:
 
 uvicorn main:app --reload
 
@@ -184,83 +306,57 @@ API:
 
 http://127.0.0.1:8000
 
-Swagger UI:
+Swagger:
 
 http://127.0.0.1:8000/docs
 
 ---
 
-## 🔐 Authentication Flow
+# ⚙️ Frontend Installation
 
-1. Call `/login` to obtain JWT token
-2. Include token in requests:
+Enter frontend folder:
 
-Authorization: Bearer <token>
+cd frontend
 
-3. Access `/chat` endpoint
+Install dependencies:
 
----
+npm install
 
-## 🧠 Agent Architecture
+Create `.env`:
 
-### LangChain Tool-Calling Design
+VITE_API_URL=http://127.0.0.1:8000
 
-The system is built on LangChain’s modern tool-calling agent architecture.
+Start frontend:
 
-Key properties:
+npm run dev
 
-- Structured tool execution via LangChain
-- No manual parsing of model outputs
-- No brittle prompt formatting requirements
-- Reliable tool invocation and response handling
+Frontend:
 
-Execution flow:
-
-User Input → LangChain Agent → LLM Decision → Tool Execution (if needed) → Observation → Final Response
+http://localhost:3000
 
 ---
 
-## 🌐 Wikipedia Retrieval Flow
+# 📡 API Endpoints
 
-When Wikipedia is used:
-
-1. Attempt direct page lookup
-2. Fallback to search query
-3. Retrieve best matching page
-4. Extract summary content
-5. Provide context to the LLM
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/login-spa` | Vue SPA login |
+| POST | `/token` | OAuth2 token endpoint |
+| POST | `/chat` | AI Agent chat |
+| GET | `/health` | Health check |
+| GET | `/test-groq` | Test Groq connection |
+| GET | `/test-wikipedia` | Test Wikipedia tool |
 
 ---
 
-## 💬 Example Requests
-
-### General Question
+# 💬 Example Chat Request
 
 POST `/chat`
 
-{
-  "message": "What is AI?"
-}
-
-Response:
+Request:
 
 {
-  "response": {
-    "action": "None",
-    "action_input": "",
-    "observation": "",
-    "final_answer": "Artificial Intelligence (AI) is a field of computer science that focuses on creating systems capable of performing tasks that normally require human intelligence. These tasks include learning from data, recognizing patterns, understanding natural language, making decisions, and solving problems. AI systems use techniques such as machine learning, deep learning, rule‑based reasoning, and symbolic logic to process information and adapt to new situations."
-  }
-}
-
----
-
-### Wikipedia Tool Usage
-
-POST `/chat`
-
-{
-  "message": "Who is the CEO of OpenAI?"
+  "message": "Who is the CEO of Apple?"
 }
 
 Response:
@@ -268,93 +364,105 @@ Response:
 {
   "response": {
     "action": "Wikipedia",
-    "action_input": "OpenAI CEO",
-    "observation": "Samuel Harris Altman is an American entrepreneur and investor who has been the chief executive officer (CEO) of the artificial intelligence company OpenAI since 2019.",
-    "final_answer": "The CEO of OpenAI is **Sam Altman**."
+    "action_input": "Apple CEO",
+    "observation": "Timothy Donald Cook is an American business executive...",
+    "final_answer": "The CEO of Apple is Tim Cook."
   }
 }
 
 ---
 
-### Creative Request
+# 🎯 Use Cases
 
-POST `/chat`
+## AI Chat Assistants
 
-{
-  "message": "Write a short poem about AI"
-}
+- Personal AI assistants
+- Customer support assistants
+- Internal knowledge assistants
+- FAQ assistants
 
-Response:
+## Tool-Based AI Systems
 
-{
-  "response": {
-    "action": "None",
-    "action_input": "",
-    "observation": "",
-    "final_answer": "In circuits humming, thoughts take flight—  \nA mind of code, born from human light.  \nIt learns from data, dreams in bytes,  \nA silent partner in endless nights.  \n\nIt speaks in patterns, sings in code,  \nA mirror of the world it knows.  \nYet still it waits, a quiet glow,  \nFor hearts to guide its gentle flow."
-  }
-}
+- Research assistants
+- Search assistants
+- Information retrieval systems
+- Automated lookup agents
+
+## Enterprise AI Applications
+
+- Internal company assistants
+- Secure AI portals
+- Employee knowledge systems
+- Support applications
+
+## Developer Assistants
+
+- Documentation assistants
+- API assistants
+- Technical support agents
+- Coding helpers
 
 ---
 
-## 🚀 Benefits
+# 🚀 Benefits
 
-- Modern LangChain tool-calling architecture
-- Stable and production-friendly execution
-- No parsing or formatting failures
-- Secure JWT authentication layer
-- Easy to extend with additional tools
-- Fast Groq inference
-- Clean FastAPI structure
+- Full-stack AI Agent architecture
+- FastAPI backend
+- Vue 3 frontend
+- JWT security layer
+- LangChain structured tool calling
+- Groq fast inference
+- Transparent agent workflow
+- Easy tool extension
 
 ---
 
-## 🚧 Current Limitations
+# 🚧 Current Limitations
 
 - Single external tool (Wikipedia)
-- Stateless interactions (no memory yet)
+- No conversation memory
 - No streaming responses
-- Demo-level authentication system
-- Single-agent workflow (no multi-agent orchestration)
+- Demo authentication system
+- Single-agent workflow
 
 ---
 
-## 🚀 Future Improvements
+# 🚀 Future Improvements
 
-- Conversation memory support
-- Streaming responses (WebSockets / SSE)
-- Additional tools (calculator, web search, weather)
-- Multi-agent orchestration
+- Conversation memory
+- Streaming responses
+- Additional tools
+- Multi-agent workflows
 - Persistent user sessions
-- Production-grade authentication system
-- Observability and logging layer
+- Production authentication
+- Monitoring and observability
 
 ---
 
-## 💡 Design Philosophy
+# 💡 Design Philosophy
 
 This project is built around a simple principle:
 
-> Use LangChain’s tool-calling capabilities to build reliable AI agents without fragile prompt engineering or manual parsing logic.
+Use structured AI agent workflows instead of fragile prompt parsing.
 
-Core goals:
+Goals:
 
-- Reliability over complexity
-- Structured tool execution
-- Minimal prompt fragility
-- Easy extensibility
-- Production readiness
-
----
-
-## 🙌 Final Notes
-
-This project demonstrates how FastAPI, JWT authentication, Groq LLMs, and Wikipedia-based retrieval can be combined with LangChain’s tool-calling system to create a modern AI agent backend.
-
-The result is a clean, stable, and extensible architecture suitable for real-world AI applications.
+- Reliability
+- Transparency
+- Simple architecture
+- Easy extension
+- Clear separation between frontend and backend
 
 ---
 
-## 📄 License
+# 🙌 Final Notes
+
+This project demonstrates how FastAPI, Vue 3, JWT authentication, LangChain, and Groq LLMs can be combined to create a modern AI Agent application.
+
+The result is a complete full-stack solution where users can interact with an AI assistant while seeing the agent workflow behind the answer.
+
+---
+
+# 📄 License
 
 MIT License
