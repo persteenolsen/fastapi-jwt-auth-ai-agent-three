@@ -69,6 +69,7 @@ The AI agent dynamically decides whether to:
 
 # 🏗️ Architecture
 
+```
 User
 |
 v
@@ -92,7 +93,7 @@ Observation
 |
 v
 Final Answer
-
+```
 ---
 
 # ✨ Features
@@ -221,7 +222,7 @@ This provides transparency into the agent workflow.
 ---
 
 # 📁 Project Structure
-
+```
 .
 ├── backend
 │   ├── main.py
@@ -245,7 +246,7 @@ This provides transparency into the agent workflow.
 │   └── vite.config.js
 │
 └── README.md
-
+```
 ---
 
 # ⚙️ Backend Installation
