@@ -1,4 +1,4 @@
-# 🚀 FastAPI + Vue 3 JWT Auth AI Agent with LangChain Tool Calling
+# 🚀 FastAPI JWT LangChain AI Agent API
 
 A production-style full-stack AI application built with **FastAPI**, **Vue 3**, **Pinia**, **LangChain**, **Groq LLMs**, and **JWT authentication**.
 
