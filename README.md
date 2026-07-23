@@ -29,9 +29,7 @@ https://github.com/persteenolsen/vue-fastapi-jwt-auth-ai-agent-three
 
 ---
 
-# Version
-
-## Backend
+# 📌 Project Information
 
 - Framework: FastAPI
 - Orchestration: LangChain
@@ -39,67 +37,6 @@ https://github.com/persteenolsen/vue-fastapi-jwt-auth-ai-agent-three
 - Python: 3.12
 - API Version: 0.0.3
 
-## Frontend
-
-- Framework: Vue 3
-- State Management: Pinia
-- Build Tool: Vite
-- Authentication: JWT Bearer Tokens
-
-## Project
-
-- Last Updated: 22-07-2026
-
----
-
-# 📌 Project Overview
-
-This project combines a modern frontend and backend architecture for building an authenticated AI Agent application.
-
-The system consists of:
-
-- FastAPI backend for API services
-- Vue 3 frontend for user interaction
-- JWT authentication for protected access
-- LangChain agent orchestration
-- Groq LLM for fast inference
-- Wikipedia tool for external factual retrieval
-
-The AI agent dynamically decides whether to:
-
-- Answer directly using the LLM
-- Call an external tool
-- Use returned information to generate the final answer
-
----
-
-# 🏗️ Architecture
-
-```
-User
-|
-v
-Vue 3 Frontend
-|
-| JWT Authentication
-|
-v
-FastAPI Backend
-|
-v
-LangChain AI Agent
-|
-+----------------+
-|                |
-v                v
-Groq LLM      Wikipedia Tool
-|
-v
-Observation
-|
-v
-Final Answer
-```
 ---
 
 # ✨ Features
@@ -354,6 +291,35 @@ http://localhost:3000
 | GET | `/test-groq` | Test Groq connection |
 | GET | `/test-wikipedia` | Test Wikipedia tool |
 
+---
+
+# 🏗️ Architecture
+
+```
+User
+|
+v
+Vue 3 Frontend
+|
+| JWT Authentication
+|
+v
+FastAPI Backend
+|
+v
+LangChain AI Agent
+|
++----------------+
+|                |
+v                v
+Groq LLM      Wikipedia Tool
+|
+v
+Observation
+|
+v
+Final Answer
+```
 ---
 
 # 💬 Example Chat Request
