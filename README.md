@@ -354,14 +354,18 @@ http://localhost:3000
 
 POST `/chat`
 
+
 Request:
 
+```json
 {
   "message": "Who is the CEO of Apple?"
 }
+```
 
 Response:
 
+```json
 {
   "response": {
     "action": "Wikipedia",
@@ -370,6 +374,7 @@ Response:
     "final_answer": "The CEO of Apple is Tim Cook."
   }
 }
+```
 
 ---
 
