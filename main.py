@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="FastAPI with JWT Auth serving a Tool-Calling AI Agent using LangChain",
-    description="22-07-2026 - FastAPI backend with JWT authentication serving a LangChain tool-calling AI agent powered by Groq, with optional Wikipedia-based factual retrieval for enhanced responses",
+    description="23-07-2026 - FastAPI backend with JWT authentication serving a LangChain tool-calling AI agent powered by Groq, with optional Wikipedia-based factual retrieval for enhanced responses",
     version="0.0.3", 
     contact={
         "name": "Per Olsen",
