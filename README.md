@@ -21,6 +21,12 @@ The frontend allows users to interact with the AI agent and see:
 - Tool input
 - Tool observation
 
+The companion Vue 3 Single Page Application is available for authenticated chat interactions.
+
+**Vue Frontend**
+
+https://github.com/persteenolsen/vue-fastapi-jwt-auth-ai-agent-three
+
 ---
 
 # Version
