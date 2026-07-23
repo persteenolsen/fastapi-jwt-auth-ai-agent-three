@@ -31,11 +31,12 @@ https://github.com/persteenolsen/vue-fastapi-jwt-auth-ai-agent-three
 
 # 📌 Project Information
 
+- API Version: 0.0.3
+- Last Updated: 22-07-2026
 - Framework: FastAPI
 - Orchestration: LangChain
 - LLM Provider: Groq (`openai/gpt-oss-20b`)
 - Python: 3.12
-- API Version: 0.0.3
 
 ---
 
